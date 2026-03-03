@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 /**
  * @brief recursively calculates the factorial of an integer n.
@@ -12,11 +13,39 @@ int factorial(int n) {
   if (n == 0) {
     return 1;
   }
-
   return n * factorial(n - 1);
 }
 
 int main(int argc, char **argv) {
+  int count = argc - 1;
+  int *numbers;
+  numbers = calloc(count,sizeof(int));
+  if(argc != 4){
+    printf("Error, please enter like this n C r or n P r");
+    return 1;
+  }
+  char letter = argv[2][0];
+  int num1 = atoi(argv[1]);
+  int num2 = atoi(argv[3]);
+  if(letter == 'C' || letter == 'P'){
+    float fn = factorial(num1);
+    float num3 = num1 - num2;
+    float fnn = factorial(num3);
+    float fr = factorial(num2);
+    if(letter =='C'){
+      float answer = (fn/(fr*fnn));
+      printf("Answer of letter: %c is %f\n",letter,answer);
+    }else if(letter=='P'){
+      float answer = (fn / fnn);
+      printf("Answer of letter: %c is %f\n",letter,answer);
+      
+    }
+  }
+  free(numbers);
+  return 0;
+}
+
+
   /*
   The program should accept a command line argument as follows:
   ./combinatorials n C r
@@ -40,4 +69,3 @@ int main(int argc, char **argv) {
   You should try and use functions to write your program.
 
   */
-}

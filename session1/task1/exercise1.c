@@ -1,8 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+int fine(int speed,int limit){
+  int fine2;
+  if (speed > limit) {
+    int excess_speed = speed - limit;
+
+    // Calculate fine based on how much over the limit
+    if (excess_speed <= 10) {
+      return 50;
+    } else if (excess_speed <= 20) {
+      return 100;
+    } else {
+      return 200;
+    }
+}
+}
+
 int main() {
-  int speed_limit, driver_speed, fine = 0;
+  int speed_limit, driver_speed;
   char input[20];
 
   // Get user input for speed limit
@@ -16,24 +33,14 @@ int main() {
   if (fgets(input, sizeof(input), stdin)) {
     sscanf(input, "%d", &driver_speed);
   }
-
-  // Determine if the driver is speeding
+  int fine2 = fine(driver_speed,speed_limit);
   if (driver_speed > speed_limit) {
-    int excess_speed = driver_speed - speed_limit;
-
-    // Calculate fine based on how much over the limit
-    if (excess_speed <= 10) {
-      fine = 50;
-    } else if (excess_speed <= 20) {
-      fine = 100;
-    } else {
-      fine = 200;
-    }
-
-    printf("Fine: $%d\n", fine);
-  } else {
-    printf("No fine needed.\n");
+    printf("Fine: %d\n",fine2);
   }
+  else{
+    printf("No fine\n");
+    }
+  
 
   return 0;
 }

@@ -23,12 +23,52 @@ void print_all(int count, int *numbers) {
 int sum_all(int count, int *numbers) {
   int total = 0;
 
-  for (int i = 0; i < count; i++) {
+  for (int i = 0; i < count; i++){
     total += numbers[i];
   }
 
   return total;
 }
+int maximum(int count, int *numbers){
+  int max = numbers[0];
+  for (int i = 1 ;i < count; i++){
+    if(numbers[i] > max){
+      max = numbers[i];
+    }
+  }
+  return max;
+}
+int minimum(int count, int *numbers){
+  int min = numbers[0];
+  for (int i = 1 ;i < count; i++){
+    if(numbers[i] < min){
+      min = numbers[i];
+    }
+  }
+  return min;
+}
+int range(int count, int *numbers){
+  int min = minimum(count, numbers);
+  int max = maximum(count, numbers);
+  int range = max - min;
+  return range;
+}
+int repeat(int count, int *numbers){
+  int rep;
+  for (int i = 0; i <count; i++){
+    for (int j = 0; j < count; j++){
+      if(numbers[i]==numbers[j+1]){
+        rep = numbers[i];
+
+        
+
+      }
+
+    }
+  }
+  return rep;
+  }
+
 
 /**
  * @brief Calculates the mean average of values in an array
@@ -56,6 +96,9 @@ int main(int argc, char **argv) {
   int choice = 0;
   int total = 0;
   float mean;
+  int max;
+  int ranger;
+  int repeating;
 
   numbers = calloc(count, sizeof(int));
 
@@ -72,7 +115,8 @@ int main(int argc, char **argv) {
     printf("1 - Show all values\n");
     printf("2 - Calculate sum\n");
     printf("3 - Calculate mean\n");
-    printf("4 - exit\n");
+    printf("4 - Calculate max\n");
+    printf("10 - exit\n");
 
     printf("Enter choice: ");
     fgets(buffer, sizeof(buffer), stdin);
@@ -96,13 +140,26 @@ int main(int argc, char **argv) {
       printf("Average is: %.2f\n", mean);
       break;
     case 4:
+      max = maximum(count, numbers);
+      printf("Maxmum is: %d\n",max);
+      break;
+    case 5:
+      ranger = range(count, numbers);
+      printf("Range is: %d\n", ranger);
+      break;
+    case 6:
+      repeating = repeat(count, numbers);
+      printf("repeat is: %d\n", repeating);
+      break;
+      
+    case 10:
       printf("Exiting...\n");
       break;
     default:
       printf("Error: Invalid choice\n");
       break;
     }
-  } while (choice != 4);
+  } while (choice != 10);
 
   return 0;
 }

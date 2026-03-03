@@ -4,19 +4,19 @@
 
 #define PI 3.14159
 
-double rectangle_area(int height, int width) {
+double rectangle_area(double height, double width) {
   return width * height;
 }
 
-void find_circle_area(double radius) {
+double find_circle_area(double radius) {
   return PI * radius * radius;
 }
 
 double triangle_area(double base, double height) {
-  printf("%f\n", 0.5 * base * height);
+  return "%f\n", 0.5 * base * height;
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char **argv) {
   if (argc < 3) {
     printf("Usage:\n");
     printf("  ./shapes rectangle width height\n");
@@ -42,7 +42,8 @@ int main(int argc, char *argv[]) {
     }
     double base = atof(argv[2]);
     double height = atof(argv[3]);
-    printf("Triangle Area: %.2f\n", triangle_area(base, height));
+    double trainglee = triangle_area(base,height);
+    printf("Triangle Area: %.2f\n", trainglee);
   } else if (strcmp(shape, "circle") == 0) {
     if (argc != 3) {
       printf("Error: Circle needs radius.\n");
