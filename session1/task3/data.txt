@@ -1,0 +1,3 @@
+C is powerful.
+I like C programming.
+C is fast.
