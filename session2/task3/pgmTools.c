@@ -100,3 +100,11 @@ void printImage(unsigned char **p, int a, int b) {
     printf("\n");
   }
 }
+void invert(void)(unsigned char **p, int a, int b){
+  for (int i =0; i <a; i++){
+    for (int j = 0; j<b; j++){
+      
+    }
+  }
+
+}

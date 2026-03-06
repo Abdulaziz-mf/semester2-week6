@@ -1,14 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-
+#include "acutest.h"
 int is_palindrome(const char *str);
-
-int main(void) {
-  // Use 'assert' to write some tests - does the function work?
-  // consider what is and is not a palindrome!
-  return 0;
-}
 
 /**
  * @brief Checks if a given string is a palindrome.
@@ -25,3 +19,12 @@ int is_palindrome(const char *str) {
   }
   return 1;
 }
+void test_is_pallindrome(void){
+  TEST_CHECK(is_palindrome("racecar") == 1);
+  TEST_MSG("Expected racecar");
+}
+
+TEST_LIST = {
+  {"Pallindrome test",test_is_pallindrome},
+
+};
